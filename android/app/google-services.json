@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "39090926666",
+    "project_id": "katma-ee53e",
+    "storage_bucket": "katma-ee53e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:39090926666:android:48ca70ed3746e18b5d22b3",
+        "android_client_info": {
+          "package_name": "com.example.khatma"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "39090926666-pa6ens85b6uibjmaoh74b6rq3himfjre.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9QmMMDTxJdmkBYzWF9ccnBAJNUCAc7ck"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "39090926666-pa6ens85b6uibjmaoh74b6rq3himfjre.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
