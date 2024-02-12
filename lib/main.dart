@@ -1,16 +1,22 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_splash_screen/flutter_splash_screen.dart';
 import 'package:khatma/models/Aladeia.dart';
 
 import 'package:khatma/quran_kareem/constant.dart';
 import 'package:khatma/quran_kareem/surahList_Scrren.dart';
 import 'package:khatma/screen/Aladeia_Screen.dart';
-import 'package:khatma/screen/Customers_List.dart';
+
 import 'package:khatma/screen/Home_Screen.dart';
+import 'package:khatma/screen/Ramadan_Screen.dart';
 
 import 'package:khatma/screen/ReadingAldaeia_Screen.dart';
+import 'package:khatma/screen/Reading_log.dart';
+import 'package:khatma/screen/WDO_Screen.dart';
+import 'package:khatma/utils/Customer_page_number.dart';
 import 'package:khatma/utils/sql_helper.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:khatma/widgets/CounterControlles.dart';
@@ -34,6 +40,7 @@ class _MyAppState extends State<MyApp> {
       await readJson();
       await getSettings();
       await getCounter();
+      await getCustomer_page_number();
     });
     super.initState();
   }
@@ -61,7 +68,7 @@ class _MyAppState extends State<MyApp> {
           textTheme: ThemeData.light().textTheme.copyWith(
                 headline5: TextStyle(
                   color: Colors.blue,
-                  fontSize: 16,
+                  fontSize: 19,
                   fontFamily: 'ElMessiri',
                   fontWeight: FontWeight.bold,
                 ),
@@ -80,7 +87,9 @@ class _MyAppState extends State<MyApp> {
         '/': (ctx) => HomeScreen(), //هذا السطر يقوم بوظيفة الصفحة الرئسية
         AladeiaScreen.screenRoute: (ctx) => AladeiaScreen(),
         ReadingAldaeia.screenRoute: (ctx) => ReadingAldaeia(),
-        CustomerListPage.screenRoute: (ctx) => CustomerListPage(),
+        ReadingLog.screenRoute: (ctx) => ReadingLog(),
+        RamadanScreen.screenRoute: (ctx) => RamadanScreen(),
+        WDOScreen.screenRoute: (ctx) => WDOScreen(),
       },
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:khatma/utils/Customer_page_number.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 import '../constant.dart';
@@ -50,7 +51,8 @@ class _PagesQuranScreen extends State<PageListScreen> {
             if (snapshot.hasError) {
               return Text("Error(1)");
             } else if (snapshot.hasData) {
-              return indexCreator(snapshot.data, context);
+              return indexCreator(
+                  snapshot.data, Customer_Subscription_number, context);
             } else {
               return const Text('Empty data');
             }
@@ -62,18 +64,22 @@ class _PagesQuranScreen extends State<PageListScreen> {
     );
   }
 
-  Container indexCreator(quran, context) {
+  Container indexCreator(quran, Customer_page_number, context) {
     return Container(
       color: const Color.fromARGB(255, 221, 250, 236),
       child: ListView(
         children: [
-          for (int i = 0; i < PagesOfVerses.length; i++)
+          for (int i = 0; i < PagesOfTheQran.length; i++)
             Container(
-              color: i % 2 == 0 ? KBackgroundColor : kListViewPageColor,
+              color: i == Customer_page_number
+                  ? Color.fromRGBO(77, 175, 86, 0.773)
+                  : i % 2 == 0
+                      ? Color(0x378B7F7F)
+                      : kListViewPageColor,
               child: TextButton(
-                child: PagesOfVerses[i]['page2'] == "0"
+                child: PagesOfTheQran[i]['page2'] == "0"
                     ? Text(
-                        " الصفحة ( ${PagesOfVerses[i]['page1']} )",
+                        " الصفحة ( ${PagesOfTheQran[i]['page1']} )",
                         style: const TextStyle(
                           fontSize: 16,
                           color: kFontsColor,
@@ -82,7 +88,7 @@ class _PagesQuranScreen extends State<PageListScreen> {
                         textDirection: TextDirection.rtl,
                       )
                     : Text(
-                        " الصفحة ( ${PagesOfVerses[i]['page1']} )  والصفحة ( ${PagesOfVerses[i]['page2']} )",
+                        " الصفحة ( ${PagesOfTheQran[i]['page1']} )  والصفحة ( ${PagesOfTheQran[i]['page2']} )",
                         style: const TextStyle(
                           fontSize: 18,
                           color: kFontsColor,
@@ -105,8 +111,9 @@ class _PagesQuranScreen extends State<PageListScreen> {
                       builder: (context) => PageBuilder(
                         arabic: quran[0],
                         Page: i,
-                        PageNumber:
-                            " الصفحة ( ${PagesOfVerses[i]['page1']} )  والصفحة ( ${PagesOfVerses[i]['page2']} )",
+                        PageNumber: PagesOfTheQran[i]['page2'] == "0"
+                            ? " الصفحة ( ${PagesOfTheQran[i]['page1']} )"
+                            : " الصفحة ( ${PagesOfTheQran[i]['page1']} )  والصفحة ( ${PagesOfTheQran[i]['page2']} )",
                         ayah: 0,
                       ),
                     ),

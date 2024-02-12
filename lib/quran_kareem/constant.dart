@@ -17,9 +17,14 @@ final ItemPositionsListener itemPositionsListener =
 
 String arabicFont = 'quran';
 double arabicFontSize = 28;
-double mushafFontSize = 40;
+double mushafFontSize = 35;
 
-Uri quranAppurl = Uri.parse('https://github.com/itsherifahmed');
+Uri quranAppurl = Uri.parse(
+    'https://www.facebook.com/%D9%85%D8%A4%D8%B3%D8%B3%D8%A9-%D8%B4%D8%A8%D8%A7%D8%A8-%D8%A7%D9%84%D8%AD%D8%B3%D9%8A%D9%86-%D8%B9-%D8%A7%D9%84%D8%AE%D9%8A%D8%B1%D9%8A%D8%A9-%D8%A7%D9%84%D8%AB%D9%82%D8%A7%D9%81%D9%8A%D8%A9-1658936927669324');
+Uri sherUrl = Uri.parse(
+    'https://drive.google.com/file/d/1fTPVfpQNhybRRttsGyBag6NFqpl_guX0/view?usp=drive_link');
+Uri GoogleDosOrInstitutionurl =
+    Uri.parse('https://forms.gle/x17DRQcW4yRYXFMR9');
 
 Future saveSettings() async {
   final prefs = await SharedPreferences.getInstance();
@@ -312,7 +317,7 @@ getPagesOfVersesCounter() async {
   }
 }
 
-List<Map> PagesOfVerses = [
+List<Map> PagesOfTheQran = [
   {"page1": "1", "page2": "0"},
   {"page1": "2", "page2": "3"},
   {"page1": "4", "page2": "5"},
@@ -635,7 +640,10 @@ List<Map> PagesOfVerses = [
   {"page1": "602", "page2": "603"},
   {"page1": "604", "page2": "0"},
 ];
-List<int> noOfPages = [
+List<int> CodOfCustomer = [4, 5];
+
+///عدد الايات في كل ورقة  اي مثلا الصفحة الثانية والثالثة تساوي 16
+List<int> NumberOfVerses_on_each_page = [
   7, 16, 13, 19, 13, 15, 12, 13, 11, 14, 15,
 ////22-23//
   12, 16, 12, 9, 12, 13, 9, 9, 12, 7, 7, 10, 12, 5, 15, 14, 16, 16, 16, 14, 17,

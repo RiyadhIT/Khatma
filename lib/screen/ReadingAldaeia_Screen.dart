@@ -1,3 +1,5 @@
+// ignore_for_file: dead_code
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:khatma/constant.dart';
@@ -80,6 +82,7 @@ class _ReadingAldaeiaState extends State<ReadingAldaeia> {
     );
   }
 
+  double dx = 0;
   Widget buildListViewContainer(Widget child) {
     return Container(
       decoration: BoxDecoration(
@@ -96,97 +99,162 @@ class _ReadingAldaeiaState extends State<ReadingAldaeia> {
 
   @override
   Widget build(BuildContext context) {
+    Offset position = Offset(100, 100);
     final routearguments =
         ModalRoute.of(context)?.settings.arguments as Map<String, String>;
     final IDALduea = routearguments["id"];
 
-    final GetIdALduea =
-        Aladeia_data.firstWhere((Alduea) => Alduea.id == IDALduea);
+    final ALduea = Aladeia_data.firstWhere((Alduea) => Alduea.id == IDALduea);
     if (IDALduea == "1007" || IDALduea == "1008")
       _shouldShowFB =
-          false; //لمنع ظهور الفلوتنك بوتون فب صفحة التعليمات ونية القراءة
+          false; //حاليا تم ايقافة لمنع ظهور الفلوتنك بوتون فب صفحة التعليمات ونية القراءة
 
-    show(int.parse("${GetIdALduea.id}"));
+    show(int.parse("${ALduea.id}"));
     ; ////عملية سحب الايدي الخاص بكل تصنيف ومن خلال هذا الايدي نستطيع الحصول على التصنيفات المرتبطة بهذا الايدي
     ///firstWhere لاننا نبحث عن دعاء واحد
 
     return Scaffold(
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+
+      // floatingActionButton: Container(
+      //     width: 150.0,
+      //     height: 140.0,
+      //     child: Padding(
+      //       padding: const EdgeInsets.only(bottom: 50.0),
+      //       child: _shouldShowFB
+      //           ? FloatingActionButton(
+      //               onPressed: () {
+      //                 setState(() async {
+      //                   dx += 10;
+
+      //                   _incrementCounter.counter = counterReading;
+      //                   _incrementCounter.incrementCounter();
+      //                   counterReading = _incrementCounter.counter;
+      //                   if ((counterReading <= 4 && ALduea.id == "1000") ||
+      //                       (counterReading <= 60 && ALduea.id == "1001") ||
+      //                       (counterReading <= 1 && ALduea.id == "1002") ||
+      //                       (counterReading <= 200 && ALduea.id == "1003")) {
+      //                     await _addItem("${ALduea.id}", "${ALduea.title}",
+      //                         "$counterReading");
+      //                   }
+      //                 });
+      //               },
+      //               tooltip: "$counterReading",
+      //               backgroundColor: Color.fromRGBO(23, 182, 134, 1),
+      //               child: Text(
+      //                 "${counterReading}",
+      //                 style: TextStyle(
+      //                   fontSize: (ALduea.id == "1003") ? 30 : 50,
+      //                   fontFamily: arabicFont,
+      //                   color: Color.fromRGBO(255, 254, 254, 1),
+      //                 ),
+      //               ),
+      //             )
+      //           : SizedBox.shrink(),
+      //     )),
+
       appBar: AppBar(
-        title: Text("${GetIdALduea.title}"),
+        title: Text("${ALduea.title}"),
       ),
       //تستخدم عندما يكون التصميم اكبر من حجم الشاشة تجعلة قابل للتمرير
-      body: SingleChildScrollView(
-        child: Column(children: [
-          // Container(
-          //   height: 300,
-          //   width: double.infinity,
-          //   child: Image.network(
-          //     GetIdALduea.imageUrl,
-          //     fit: BoxFit.cover,
-          //   ),
-          // ),
-          // SizedBox(height: 10),
-          // buildSectionTitle(context, "${GetIdALduea.title}"),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: _convertHadith(context, GetIdALduea.textAladua),
-          ),
-        ]),
-      ),
-      floatingActionButton: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          if (_shouldShowFB)
-            FloatingActionButton(
-              onPressed: () {
-                setState(() async {
-                  _incrementCounter.counter = counterReading;
-                  _incrementCounter.incrementCounter();
-                  counterReading = _incrementCounter.counter;
+      body: Stack(children: <Widget>[
+        Container(
+          width: double.infinity,
+          height: double.infinity,
+          decoration: BoxDecoration(
 
-                  await _addItem("${GetIdALduea.id}", "${GetIdALduea.title}",
-                      "$counterReading");
+              /// color: Colors.yellow,
+              border: Border.all(
+            color: Theme.of(context).cardColor,
+          )),
+          child: SingleChildScrollView(
+              child: Column(
+            children: [
+              Padding(
+                  padding: const EdgeInsets.only(right: 15, left: 15),
+                  child: _convertHadith(context, ALduea.textAladua))
+            ],
+          )),
+        ),
+        Positioned(
 
-                  print("save ${GetIdALduea.id}");
+            /// left: MediaQuery.of(context).size.width / 2,
 
-                  // await _updateItem(
-                  //     "${GetIdALduea.id}", "${GetIdALduea.title}", "$DueaAlfarajCounter");
-                  // print("updet");
-                });
-              },
-              tooltip: 'Increment',
-              child: Text(
-                "${counterReading}",
-                style: Theme.of(context).textTheme.headlineMedium,
-              ),
-            ),
-        ],
-      ),
-      // floatingActionButton: GetBuilder<CounterBuilder>(
-      //   init: CounterBuilder(),
-      //   builder: (Value) => FloatingActionButton(
-      //     onPressed: () {
-      //       setState(() async {
-      //         Value.bcounter = counterReading;
-      //         Value.increment();
-      //         counterReading = Value.bcounter;
+            right: 20.0,
+            bottom: 20.0,
+            child: Draggable(
 
-      //         await _addItem("${GetIdALduea.id}",
-      //             "${GetIdALduea.title}", "$counterReading");
+                ///تسمح هذه الخاصية بتحديد الويدجت التي يتم عرضها أثناء سحب الويدجت.
+                feedback: Container(
+                    child: FloatingActionButton(
+                        child: Icon(Icons.add), onPressed: () {})),
+                child: Container(
+                    child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: _shouldShowFB
+                      ? FloatingActionButton.large(
+                          onPressed: () {
+                            setState(() async {
+                              _incrementCounter.counter = counterReading;
+                              _incrementCounter.incrementCounter();
+                              counterReading = _incrementCounter.counter;
+                              if ((counterReading <= 4 &&
+                                      ALduea.id == "1000") ||
+                                  (counterReading <= 60 &&
+                                      ALduea.id == "1001") ||
+                                  (counterReading <= 1 &&
+                                      ALduea.id == "1002") ||
+                                  (counterReading <= 200 &&
+                                      ALduea.id == "1003")) {
+                                await _addItem("${ALduea.id}",
+                                    "${ALduea.title}", "$counterReading");
+                              }
+                            });
+                          },
 
-      //         print("save ${GetIdALduea.id}");
+                          /// tooltip: "$counterReading",
+                          /// backgroundColor: Color.fromRGBO(23, 182, 134, 1),
+                          child: Text(
+                            "${counterReading}",
+                            style: TextStyle(
+                              fontSize: (ALduea.id == "1003") ? 30 : 50,
+                              fontFamily: arabicFont,
+                              color: Color.fromRGBO(255, 254, 254, 1),
+                            ),
+                          ),
+                        )
+                      : SizedBox.shrink(),
+                )),
 
-      //         // await _updateItem(
-      //         //     "${GetIdALduea.id}", "${GetIdALduea.title}", "$DueaAlfarajCounter");
-      //         // print("updet");
-      //       });
-      //     },
-      //     child: Text(
-      //       "${counterReading}",
-      //       style: Theme.of(context).textTheme.headlineMedium,
-      //     ),
-      //   ),
-      //),
+                //تسمح هذه الخاصية بتحديد الويدجت التي يتم عرضها بينما يتم سحب الويدجت.
+                childWhenDragging: Container(),
+                //تسمح هذه الخاصية بتحديد الإجراء الذي يتم تنفيذه عند انتهاء سحب الويدجت.
+
+                onDragEnd: (details) {
+                  setState(() {
+                    position = details.offset;
+
+                    ///لكي تقف على الوضع الحالي
+                  });
+                  // print(position);
+                  // print(position.dx);
+                  // print(position.dy);
+                })),
+        // Container(
+        //   height: 300,
+        //   width: double.infinity,
+        //   child: Image.network(
+        //     GetIdALduea.imageUrl,
+        //     fit: BoxFit.cover,
+        //   ),
+        // ),
+        // SizedBox(height: 10),
+        // buildSectionTitle(context, "${GetIdALduea.title}"),
+        // Padding(
+        //   padding: const EdgeInsets.only(right: 15, left: 15),
+        //   child: _convertHadith(context, ALduea.textAladua),
+        // ),
+      ]),
     );
   }
 }

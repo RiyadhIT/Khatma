@@ -99,7 +99,7 @@ class _surahListScreenState extends State<surahListScreen> {
 
                     children: [
                       SizedBox(
-                        width: 300,
+                        width: 200,
                         child: Text(
                           arabicName[i]['name'],
                           style: const TextStyle(

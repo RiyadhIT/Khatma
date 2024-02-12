@@ -33,6 +33,8 @@ class PageBuilder extends StatefulWidget {
 class _PageBuilderState extends State<PageBuilder> {
   bool view = true; //لتغير شكل الصفحة
 
+  IncrementCounter _incrementCounter = IncrementCounter();
+
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       await getPagesOfVersesCounter();
@@ -462,7 +464,7 @@ class _PageBuilderState extends State<PageBuilder> {
     int previousVerses = 0;
     if (widget.Page + 1 != 1) {
       for (int i = widget.Page - 1; i >= 0; i--) {
-        previousVerses = previousVerses + noOfPages[i];
+        previousVerses = previousVerses + NumberOfVerses_on_each_page[i];
       }
     }
 
@@ -572,7 +574,8 @@ class _PageBuilderState extends State<PageBuilder> {
 
   @override
   Widget build(BuildContext context) {
-    int LengthOfPage = noOfPages[widget.Page];
+    Offset position = Offset(100, 100);
+    int LengthOfPage = NumberOfVerses_on_each_page[widget.Page];
     show(int.parse("${widget.Page}"));
 
     ///عدد الايات لهذة السورة
@@ -582,33 +585,98 @@ class _PageBuilderState extends State<PageBuilder> {
     return Directionality(
       textDirection: TextDirection.ltr,
       child: Scaffold(
-          floatingActionButton: GetBuilder<CounterBuilder>(
-            init: CounterBuilder(),
-            builder: (Value) => FloatingActionButton(
-              onPressed: () {
-                print("CounterOfPages old: ${counterReading}");
-
-                {
-                  setState(() async {
-                    Value.bcounter = counterReading;
-                    Value.increment();
-                    Value.bcounter;
-                    print("${Value.bcounter}");
-                    counterReading = Value.bcounter;
-                    await _addItem("${widget.Page}", "${widget.PageNumber}",
-                        "$counterReading");
-
-                    print(" Page:${widget.Page}");
-                    print("CounterOfPages New:${counterReading}");
-                  });
-                }
-              },
-              child: Text(
-                "${counterReading}",
-                style: Theme.of(context).textTheme.headlineMedium,
+          floatingActionButton: Draggable(
+              feedback: Container(
+                child: FloatingActionButton(
+                    child: Icon(Icons.add), onPressed: () {}),
               ),
-            ),
-          ),
+              child: Container(
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: FloatingActionButton.large(
+                    onPressed: () {
+                      print("CounterOfPages old: ${counterReading}");
+
+                      {
+                        setState(() async {
+                          _incrementCounter.counter = counterReading;
+                          _incrementCounter.incrementCounter();
+                          counterReading = _incrementCounter.counter;
+
+                          if (counterReading <= 30) {
+                            await _addItem("${widget.Page}",
+                                "${widget.PageNumber}", "$counterReading");
+                          }
+                        });
+                      }
+                    },
+                    // tooltip: "$counterReading",
+                    // backgroundColor: Color.fromRGBO(23, 182, 134, 1),
+                    child: Text(
+                      "${counterReading}",
+                      style: TextStyle(
+                        fontSize: 50,
+                        fontFamily: arabicFont,
+                        color: Color.fromRGBO(255, 254, 254, 1),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              childWhenDragging: Container(),
+              //تسمح هذه الخاصية بتحديد الإجراء الذي يتم تنفيذه عند انتهاء سحب الويدجت.
+
+              onDragEnd: (details) {
+                setState(() {
+                  position = details.offset;
+
+                  ///لكي تقف على الوضع الحالي
+                });
+                // print(position);
+                // print(position.dx);
+                // print(position.dy);
+              }),
+
+          // floatingActionButton: Container(
+          //   width: 150.0,
+          //   height: 150.0,
+          //   child: Padding(
+          //     padding: const EdgeInsets.only(bottom: 50.0),
+          //     child: GetBuilder<CounterBuilder>(
+          //         init: CounterBuilder(),
+          //         builder: (Value) => FloatingActionButton(
+          //             onPressed: () {
+          //               print("CounterOfPages old: ${counterReading}");
+
+          //               {
+          //                 setState(() async {
+
+          //                   Value.bcounter = counterReading;
+          //                   Value.increment();
+          //                   Value.bcounter;
+          //                   print("${Value.bcounter}");
+          //                   counterReading = Value.bcounter;
+          //                   if (counterReading <= 30) {
+          //                     await _addItem("${widget.Page}",
+          //                         "${widget.PageNumber}", "$counterReading");
+          //                   }
+          //                 });
+          //               }
+          //             },
+          //             backgroundColor: Color.fromRGBO(23, 182, 134, 1),
+          //             child: Transform.translate(
+          //               offset: Offset(dx, 5),
+          //               child: Text(
+          //                 "${counterReading}",
+          //                 style: TextStyle(
+          //                   color: Color.fromRGBO(255, 254, 254, 1),
+          //                   fontSize: 50.0,
+          //                   fontStyle: FontStyle.normal,
+          //                 ),
+          //               ),
+          //             )
+          //             )
+
           appBar: AppBar(
             actions: <Widget>[
               IconButton(

@@ -3,11 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:khatma/quran_kareem/surahList_Scrren.dart';
 import 'package:khatma/screen/Aladeia_Screen.dart';
 import 'package:khatma/screen/Home_Screen.dart';
+import 'package:khatma/screen/Ramadan_Screen.dart';
+import 'package:khatma/screen/Reading_log.dart';
+import 'package:khatma/screen/WDO_Screen.dart';
+import 'package:khatma/utils/Customer_page_number.dart';
 import 'package:path/path.dart';
 
 import '../quran_kareem/PageList_Screen.dart';
-import '../screen/Customers_List.dart';
+
 import '../screen/ReadingAldaeia_Screen.dart';
+import '../screen/SubscriptionMeals_Screen.dart';
 
 class HomeItem extends StatelessWidget {
   final String id;
@@ -80,18 +85,15 @@ class HomeItem extends StatelessWidget {
         else if (id == 'c8') {
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (context) => CustomerListPage(),
+              builder: (context) => ReadingLog(),
             ),
           );
         }
 
         ///تعليمات الاشتراك
         else if (id == 'c9') {
-          Navigator.of(context).pushNamed(
-            ReadingAldaeia.screenRoute,
-            arguments: {
-              "id": "1007",
-            },
+          Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => SubscriptionMeals()),
           );
         }
 
@@ -103,48 +105,51 @@ class HomeItem extends StatelessWidget {
               "id": "1008",
             },
           );
-        } else {
+        }
+
+        ///صفحة تعلمات شهر رمضان
+        else if (id == 'c11') {
+          Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => RamadanScreen()),
+          );
+        }
+
+        ///صفحة طرق التبرع للمؤسسة
+        else if (id == 'c12') {
+          Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => WDOScreen()),
+          );
+        }
+        ///////للانتقال الى صفحات الادعية
+        else {
           selectCategory(context);
         }
       },
       splashColor: Theme.of(context).primaryColor,
-      borderRadius: BorderRadius.circular(15),
-      child: Padding(
-        padding: const EdgeInsets.all(2.0),
-        child: SizedBox(
-            height: 250,
-            child: Stack(
-              alignment: Alignment.center,
-              children: [
-                // ClipRRect(
-                //   borderRadius: BorderRadius.circular(15),
-                //   child: Image.asset(
-                //     imageUrl,
-                //     height: 250,
-                //     fit: BoxFit.cover,
-                //   ),
-                // ),
-                Container(
-                  alignment: Alignment.center,
-                  padding: EdgeInsets.all(5),
-                  child: Text(
-                    title,
-                    style: TextStyle(
-                        color: Color.fromARGB(255, 0, 0, 0),
-                        //decorationColor: Colors.red,
-                        decorationStyle: TextDecorationStyle.wavy,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w700,
-                        overflow: TextOverflow.clip,
-                        fontFamily: "ElMessiri"),
-                  ),
-                  decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 244, 248, 248),
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                )
-              ],
-            )),
+      child: Container(
+        alignment: Alignment.center,
+        padding: const EdgeInsets.only(
+          top: 0.1,
+          left: 5,
+          right: 5,
+          bottom: 0.1,
+        ),
+        decoration: BoxDecoration(
+          color: Color.fromARGB(255, 231, 215, 144),
+          borderRadius: BorderRadius.circular(15),
+        ),
+        child: Text(
+          title,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+              color: Color.fromARGB(255, 0, 0, 0),
+              //decorationColor: Colors.red,
+              decorationStyle: TextDecorationStyle.wavy,
+              fontSize: 19,
+              fontWeight: FontWeight.bold,
+              overflow: TextOverflow.clip,
+              fontFamily: "ElMessiri"),
+        ),
       ),
     );
   }

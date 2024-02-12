@@ -35,8 +35,9 @@ class AladeiaItem extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15),
           ),
+          color: Colors.white,
           elevation: 2,
-          margin: EdgeInsets.all(10),
+          margin: EdgeInsets.all(5),
           child: Column(
             children: [
               Stack(
@@ -47,11 +48,14 @@ class AladeiaItem extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Container(
-                          height: 70,
-                          alignment: Alignment.bottomRight,
+                          decoration: BoxDecoration(
+                            /// color: Color.fromARGB(255, 231, 215, 144),
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          height: 40,
+                          alignment: Alignment.center,
                           padding: EdgeInsets.symmetric(
-                            vertical: 10,
-                            horizontal: 20,
+                            vertical: 0,
                           ),
                           child: Text(
                             title,

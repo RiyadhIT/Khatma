@@ -27,8 +27,8 @@ class MyDrawer extends StatelessWidget {
                   height: 80,
                 ),
                 const Text(
-                  'ختمة',
-                  style: TextStyle(fontSize: 20, fontFamily: "ElMessiri"),
+                  "لا تهجروا القرآن والصدقة",
+                  style: TextStyle(fontSize: 16, fontFamily: "ElMessiri"),
                 ),
               ],
             ),
@@ -47,26 +47,31 @@ class MyDrawer extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const Settings()));
             },
           ),
+          //خاصة بمشاركة التطبيق تم ايقافها مؤقتا
+//           ListTile(
+//             leading: const Icon(
+//               Icons.share,
+//             ),
+//             title: const Text(
+//               'مشاركة التطبيق',
+//               style: TextStyle(fontSize: 16, fontFamily: "ElMessiri"),
+//             ),
+//             onTap: () async {
+// //               Share.share('''*Quran app*\n
+// // u can develop it from my github github.com/itsherifahmed ''');
+//               // Navigator.pop(context);
+//               if (!await launchUrl(sherUrl,
+//                   mode: LaunchMode.externalApplication)) {
+//                 throw 'Could not launch $quranAppurl';
+//               }
+//             },
+//           ),
           ListTile(
             leading: const Icon(
-              Icons.share,
+              Icons.facebook_sharp,
             ),
             title: const Text(
-              'مشاركة التطبيق',
-              style: TextStyle(fontSize: 16, fontFamily: "ElMessiri"),
-            ),
-            onTap: () {
-              Share.share('''*Quran app*\n
-u can develop it from my github github.com/itsherifahmed ''');
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            leading: const Icon(
-              Icons.rate_review,
-            ),
-            title: const Text(
-              'Rate',
+              'فيسبوك',
             ),
             onTap: () async {
               if (!await launchUrl(quranAppurl,
