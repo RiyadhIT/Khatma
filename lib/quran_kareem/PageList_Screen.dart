@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:khatma/utils/Customer_page_number.dart';
 
-import 'package:shared_preferences/shared_preferences.dart';
 import '../constant.dart';
 import 'Page_builder.dart';
-import 'mydrawer.dart';
-import 'surah_builder.dart';
 import 'constant.dart';
-import './arabic_sura_number.dart';
 
 class PageListScreen extends StatefulWidget {
   const PageListScreen({Key? key}) : super(key: key);

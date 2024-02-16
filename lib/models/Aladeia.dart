@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class Aladeia {
   final String id;
   final List<String> categories;

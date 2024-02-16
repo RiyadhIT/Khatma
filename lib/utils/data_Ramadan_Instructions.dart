@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 const Ramadan_data = const [
   RamadanInstructions(
     id: 'n1',

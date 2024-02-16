@@ -1,5 +1,4 @@
 /////طرق التبرع للمؤسسة
-import 'package:flutter/material.dart';
 
 const WOD_data = const [
   MethodOfPayment(

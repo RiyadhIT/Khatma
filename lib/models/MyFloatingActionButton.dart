@@ -1,10 +1,8 @@
 // ignore_for_file: unused_element
 
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_notifier.dart';
 
 import '../utils/sql_helper.dart';
-import '../widgets/CounterControlles.dart';
 
 Widget x(String str) {
   return FloatingActionButton(

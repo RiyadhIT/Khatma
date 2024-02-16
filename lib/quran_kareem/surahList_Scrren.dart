@@ -1,11 +1,8 @@
-import 'dart:typed_data';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-import 'package:shared_preferences/shared_preferences.dart';
 import '../constant.dart';
-import 'mydrawer.dart';
 import 'surah_builder.dart';
 import 'constant.dart';
 import './arabic_sura_number.dart';

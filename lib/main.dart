@@ -1,13 +1,6 @@
-import 'dart:async';
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_splash_screen/flutter_splash_screen.dart';
-import 'package:khatma/models/Aladeia.dart';
 
 import 'package:khatma/quran_kareem/constant.dart';
-import 'package:khatma/quran_kareem/surahList_Scrren.dart';
 import 'package:khatma/screen/Aladeia_Screen.dart';
 
 import 'package:khatma/screen/Home_Screen.dart';
@@ -17,10 +10,8 @@ import 'package:khatma/screen/ReadingAldaeia_Screen.dart';
 import 'package:khatma/screen/Reading_log.dart';
 import 'package:khatma/screen/WDO_Screen.dart';
 import 'package:khatma/utils/Customer_page_number.dart';
-import 'package:khatma/utils/sql_helper.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:khatma/widgets/CounterControlles.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   runApp(const MyApp());

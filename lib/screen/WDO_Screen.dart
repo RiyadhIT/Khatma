@@ -1,17 +1,6 @@
-import 'package:anim_search_bar/anim_search_bar.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:get/get.dart';
-import 'package:khatma/utils/app_data.dart';
-import 'package:khatma/utils/data_Ramadan_Instructions.dart';
 import 'package:khatma/utils/data_WDO.dart';
 import 'package:khatma/widgets/ListViewItemClass.dart';
-import 'package:url_launcher/url_launcher.dart';
-
-import '../constant.dart';
-import '../quran_kareem/constant.dart';
-import '../utils/Customer_page_number.dart';
 
 ////WDOScreen صفحة طرق التبرع للمؤسسة
 ///WDO مختصر Ways to donate to the organization
@@ -32,8 +21,6 @@ class _WDOScreenState extends State<WDOScreen> {
   @override
   @override
   Widget build(BuildContext context) {
-    TextEditingController _txtCusromerPageNumber = TextEditingController();
-
     return Scaffold(
         appBar: AppBar(
           title: Text(

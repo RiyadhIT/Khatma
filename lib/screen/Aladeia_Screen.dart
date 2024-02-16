@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:khatma/quran_kareem/surahList_Scrren.dart';
 import 'package:khatma/utils/app_data.dart';
 import 'package:khatma/widgets/Aladeia_item.dart';
-import '../models/Aladeia.dart';
 
 class AladeiaScreen extends StatelessWidget {
   // final String categoryId;

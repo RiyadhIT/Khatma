@@ -1,12 +1,7 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../constant.dart';
-import '../main.dart';
 
 import '../utils/sql_helper.dart';
 import '../widgets/CounterControlles.dart';
@@ -45,13 +40,11 @@ class _PageBuilderState extends State<PageBuilder> {
 
   List<Map<String, dynamic>> _journals = [];
 
-  bool _isLoading = true;
   // This function is used to fetch all data from the database
   void _refreshJournals() async {
     final data = await SQLHelper.getItems();
     setState(() {
       _journals = data;
-      _isLoading = false;
       _refreshJournals(); // Loading the diary when the app starts
     });
   }
@@ -59,19 +52,17 @@ class _PageBuilderState extends State<PageBuilder> {
   late String title;
   late int counterReading = 0;
   void show(int id) {
-    if (id != null) {
-      final existingJournal = _journals
-          .firstWhere((element) => element['id'] == id, orElse: () => {});
+    final existingJournal = _journals
+        .firstWhere((element) => element['id'] == id, orElse: () => {});
 
-      ///var found = _journals.firstWhereOrNull((e) => e['id'] == id);
-      if (existingJournal.isEmpty) return;
-      title = existingJournal['title'];
-      print("title:$title");
+    ///var found = _journals.firstWhereOrNull((e) => e['id'] == id);
+    if (existingJournal.isEmpty) return;
+    title = existingJournal['title'];
+    print("title:$title");
 
-      counterReading = int.parse(existingJournal['NumberOfReadings']);
+    counterReading = int.parse(existingJournal['NumberOfReadings']);
 
-      print("counter:$counterReading");
-    }
+    print("counter:$counterReading");
   }
 
   Future<void> _addItem(
@@ -574,7 +565,6 @@ class _PageBuilderState extends State<PageBuilder> {
 
   @override
   Widget build(BuildContext context) {
-    Offset position = Offset(100, 100);
     int LengthOfPage = NumberOfVerses_on_each_page[widget.Page];
     show(int.parse("${widget.Page}"));
 
@@ -628,8 +618,6 @@ class _PageBuilderState extends State<PageBuilder> {
 
               onDragEnd: (details) {
                 setState(() {
-                  position = details.offset;
-
                   ///لكي تقف على الوضع الحالي
                 });
                 // print(position);

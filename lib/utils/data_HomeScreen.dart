@@ -1,7 +1,3 @@
-import 'dart:convert';
-
-import 'package:flutter/material.dart';
-
 import '../models/category.dart';
 
 const HomeScreenItemList = const [

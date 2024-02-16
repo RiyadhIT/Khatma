@@ -1,10 +1,6 @@
-import 'dart:async';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../quran_kareem/mydrawer.dart';
-import '../utils/app_data.dart';
 import '../utils/data_HomeScreen.dart';
 import '../widgets/Home_item.dart';
 

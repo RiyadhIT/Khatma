@@ -1,9 +1,4 @@
-import 'dart:convert';
-
-import 'package:flutter/material.dart';
-
 import '../models/Aladeia.dart';
-import '../models/category.dart';
 
 const Aladeia_data = const [
   Aladeia(
@@ -47,8 +42,7 @@ const Aladeia_data = const [
       title: 'دعاء الفرج',
       imageUrl: '',
       duration: 20,
-      textAladua:
-          '''
+      textAladua: '''
   اللَّهُمَ کُنْ لِوَلِیکَ الحُجّه ابنِ الحَسن صلواتك عليه وعلى أبائه فِی هَذِهِ السَّاعَةِ وَفِی کُلِّ سَاعَةٍ وَلِیاً وَحَافِظاً وَقَائِداً وَنَاصِراً وَدَلِیلًا وَعَیناً حَتَّی تُسْکِنَهُ أَرْضَکَ طَوْعاً وَتُمَتِّعَهُ فِیهَا طَوِیلًا.
 '''),
   Aladeia(
@@ -120,8 +114,7 @@ const Aladeia_data = const [
       title: 'تعليمات الاشتراك',
       imageUrl: "assets/images/28.png",
       duration: 20,
-      textAladua:
-          '''  
+      textAladua: '''  
     واجبات المشترك\n
       أ-قراءة الورقة القرانية ثلاثين مرة في الشهر 
        ب-قراءة زيارة عاشوراء اربعة مرات في الشهر

@@ -2,12 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:khatma/quran_kareem/surahList_Scrren.dart';
 import 'package:khatma/screen/Aladeia_Screen.dart';
-import 'package:khatma/screen/Home_Screen.dart';
 import 'package:khatma/screen/Ramadan_Screen.dart';
 import 'package:khatma/screen/Reading_log.dart';
 import 'package:khatma/screen/WDO_Screen.dart';
-import 'package:khatma/utils/Customer_page_number.dart';
-import 'package:path/path.dart';
 
 import '../quran_kareem/PageList_Screen.dart';
 
