@@ -1,11 +1,11 @@
 name: khatma
 description: A new Flutter project.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.2.6 <4.0.0'
+  sdk: ">=3.3.1 <4.0.0"
 
 dependencies:
   flutter:
@@ -19,7 +19,7 @@ dependencies:
 
   # https://pub.dev/packages/get
   get: ^4.6.6
-  
+
   # https://pub.dev/packages/flutter_localization
   flutter_localization: ^0.2.0
 
@@ -30,22 +30,22 @@ dependencies:
   share_plus: ^7.2.2
 
   # https://pub.dev/packages/url_launcher
-  url_launcher: ^6.2.4
+  url_launcher: ^6.2.5
 
   # https://pub.dev/packages/shared_preferences
   shared_preferences: ^2.2.2
 
   # https://pub.dev/packages/firebase_messaging
-  firebase_messaging: ^14.7.15
+  firebase_messaging: ^14.7.19
 
   # https://pub.dev/packages/cloud_firestore
-  cloud_firestore: ^4.15.4
+  cloud_firestore: ^4.15.8
 
   # https://pub.dev/packages/anim_search_bar
   anim_search_bar: ^2.0.3
-  
+
   # https://pub.dev/packages/flutter_splash_screen
-  flutter_splash_screen: ^2.0.1+1
+  flutter_splash_screen: ^3.0.0
 
 dev_dependencies:
   flutter_test:
@@ -59,7 +59,6 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -96,10 +95,10 @@ flutter:
           weight: 700
     - family: quran
       fonts:
-        - asset:  assets/fonts/HafsSmart_08.ttf
+        - asset: assets/fonts/HafsSmart_08.ttf
     - family: me_quran
       fonts:
-        - asset:  assets/fonts/me_quran.ttf
+        - asset: assets/fonts/me_quran.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
