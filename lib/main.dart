@@ -53,6 +53,7 @@ class _MyAppState extends State<MyApp> {
       darkTheme: ThemeData.dark(),
       themeMode: ThemeMode.system,
       theme: ThemeData(
+          useMaterial3: false,
           primarySwatch: Colors.teal,
           //accentColor: Colors.teal[400],
           fontFamily: 'ElMessiri',
